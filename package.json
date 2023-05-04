@@ -1,0 +1,26 @@
+{
+  "name": "student-study-portal",
+  "version": "1.0.0",
+  "description": "Students can register their account Login authentication Students can create notes Students can create homework.Students can create to-do-list.Students can access notes provided by the teachers Students can search and read books.Students can search and watch video lectures.Students can search the meaning of any word in dictionary.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "author": "Sheryar Ahmed",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "i": "^0.3.7",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.1.0",
+    "nodemon": "^2.0.22",
+    "npm": "^9.6.5",
+    "validator": "^13.9.0"
+  }
+}
