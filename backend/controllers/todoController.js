@@ -54,7 +54,6 @@ const updatTodo = expressAsyncHandler(async (req, res) => {
     const updateTodo = await Todo.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
     });
-    console.log('update', updateTodo);
     if (!updateTodo) {
         res.status(400);
         throw new Error("Todo is not updated, try again");
