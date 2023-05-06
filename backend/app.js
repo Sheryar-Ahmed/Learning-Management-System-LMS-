@@ -1,6 +1,6 @@
 const express = require('express');
 require('dotenv').config();
-const studentRoute = require('./routes/routeStudent');
+const routeUser = require('./routes/routeUser');
 const notesRoute = require('./routes/routeNotes');
 const routeHomeWork = require('./routes/routeHomeWork');
 const routeTodo = require('./routes/routeTodo');
@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use('/api/v1', studentRoute);
+app.use('/api/v1', routeUser);
 app.use('/api/v1', notesRoute);
 app.use('/api/v1', routeHomeWork);
 app.use('/api/v1/students', routeTodo);

@@ -3,7 +3,7 @@ const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const studentSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     name: {
         type: String,
         requred: [true, 'Enter your name']
@@ -19,18 +19,22 @@ const studentSchema = mongoose.Schema({
         required: [true, "passowrd is required"],
         minLength: [8, 'password must be greater than 7 characters'],
         select: false // never get password when calling user again
-    }
+    },
+    role: {
+        type: String,
+        default: "student"
+    },
 });
 
 // hash password before uploading to the collection
-studentSchema.pre('save', async function (next) {
+userSchema.pre('save', async function (next) {
     const user = this;
     if (!user.isModified('password')) return next(); //will check if password is not modified, do not hash it.
     user.password = await bcrypt.hash(user.password, 10);
     next();
 });
 
-studentSchema.methods.getJWTToken = function () {
+userSchema.methods.getJWTToken = function () {
     const user = this;
     const id = user.id;
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -38,12 +42,12 @@ studentSchema.methods.getJWTToken = function () {
     });
 };
 
-studentSchema.methods.comparePassword = async function (enteredPassword) {
+userSchema.methods.comparePassword = async function (enteredPassword) {
     const user = this;
     const pass = await user.password;
     return await bcrypt.compare(enteredPassword, pass);
 };
 
-const Student = mongoose.models?.student || mongoose.model('student', studentSchema);
+const User = mongoose.models?.users || mongoose.model('users', userSchema);
 
-module.exports = Student;
+module.exports = User;
