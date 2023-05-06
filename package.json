@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Students can register their account Login authentication Students can create notes Students can create homework.Students can create to-do-list.Students can access notes provided by the teachers Students can search and read books.Students can search and watch video lectures.Students can search the meaning of any word in dictionary.",
   "main": "backend/server.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js"

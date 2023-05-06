@@ -4,4 +4,4 @@ const PORT = process.env.NODE_PORT || 5000;
 
 dbConnection();
 
-app.listen(PORT, () => console.log(`server is running on http://localhost:${PORT}`));
+app.listen(PORT, (req, res) => console.log(`server is running on ${PORT}`));
