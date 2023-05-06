@@ -1,7 +1,7 @@
 # student-study-portal
-##Features
-Students can register their account Login authentication
-⚫ Students can create notes
+## Features
+### Students can register their account Login authentication
+⚫ Students can create notes 
 ⚫ Students can create homework
 ⚫ Students can create to-do-list
 ⚫ Students can access notes provided by the teachers
