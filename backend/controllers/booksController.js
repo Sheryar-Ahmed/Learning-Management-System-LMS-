@@ -1,5 +1,6 @@
 const expressAsyncHandler = require('express-async-handler');
 const Book = require('../models/bookModel');
+const ApiFeatures = require('../../utils/apiFeatures');
 
 const setBook = expressAsyncHandler(async (req, res) => {
     if (!req.body) {
@@ -31,16 +32,27 @@ const setBook = expressAsyncHandler(async (req, res) => {
 });
 
 const getAllBooks = expressAsyncHandler(async (req, res) => {
-    const books = await Book.find();
+
+    const resultsPerPage = 4;
+
+    const apiFeatures = new ApiFeatures(Book.find(), req.query)
+        .search('title')
+        .filterByRating()
+        .pagination(resultsPerPage)
+        ;
+
+    const books = await apiFeatures.query;
+
     if (!books) {
         res.status(400);
-        throw new Error("Not found");
+        throw new Error("Not found with this query data");
     };
 
     res.status(200).json({
         success: true,
         reqBooks: books
     });
+
 });
 
 
